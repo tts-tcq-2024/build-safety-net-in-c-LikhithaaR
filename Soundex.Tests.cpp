@@ -14,8 +14,8 @@ void testGenerateSoundex() {
     assert(strcmp(soundex, "L200") == 0);
 
     // Test case 2: Name with repeated codes
-    generateSoundex("Vijay", soundex);
-    assert(strcmp(soundex, "V200") == 0);
+    generateSoundex("Bottle", soundex);
+    assert(strcmp(soundex, "B340") == 0);
 
     // Test case 3: Name with mixed vowels and consonants
     generateSoundex("Radha", soundex);
