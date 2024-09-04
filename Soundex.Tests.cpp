@@ -25,6 +25,10 @@ void testGenerateSoundex() {
     generateSoundex("Ram", soundex);
     assert(strcmp(soundex, "R500") == 0);
 
+    // Test case 4: Short name
+    generateSoundex("Tha", soundex);
+    assert(strcmp(soundex, "T500") == 0);
+
     printf("All test cases passed successfully!\n");
 
 }
