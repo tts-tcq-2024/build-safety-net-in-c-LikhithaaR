@@ -24,7 +24,7 @@ void Read_characters(char currentChar, char *soundex, int *sIndex, char *previou
         soundex[(*sIndex)++] = code;
         *previousCode = code;
     }
-
+}
 
 void Write_characters(const char *name, char *soundex, int *sIndex, char *previousCode) {
     for (int i = 1; name[i] != '\0' && *sIndex < 4; i++) {
