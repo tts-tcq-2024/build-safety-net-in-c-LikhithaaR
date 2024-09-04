@@ -14,11 +14,11 @@ char getSoundexCode(char c) {
     unsigned int index = c - 'A';
     return (index < 26) ? soundexCodes[index] : '0';
 }
-void initializeSoundex(char *soundex, char firstLetter) {
+void Soundex_init(char *soundex, char firstLetter) {
     soundex[0] = toupper(firstLetter);
 }
 
-void handleCharacter(char currentChar, char *soundex, int *sIndex, char *previousCode) {
+void Read_characters(char currentChar, char *soundex, int *sIndex, char *previousCode) {
     char code = getSoundexCode(currentChar);
     if (code != '0' && code != *previousCode) {
         soundex[(*sIndex)++] = code;
@@ -26,25 +26,25 @@ void handleCharacter(char currentChar, char *soundex, int *sIndex, char *previou
     }
 }
 
-void processCharacters(const char *name, char *soundex, int *sIndex, char *previousCode) {
+void Write_characters(const char *name, char *soundex, int *sIndex, char *previousCode) {
     for (int i = 1; name[i] != '\0' && *sIndex < 4; i++) {
-        handleCharacter(name[i], soundex, sIndex, previousCode);
+        Read_characters(name[i], soundex, sIndex, previousCode);
     }
 }
 
-void fillRemainingWithZeroes(char *soundex, int *sIndex) {
+void Zerro_Padding(char *soundex, int *sIndex) {
     while (*sIndex < 4) {
         soundex[(*sIndex)++] = '0';
     }
 }
 
 void generateSoundex(const char *name, char *soundex) {
-    initializeSoundex(soundex, name[0]);
+    Soundex_init(soundex, name[0]);
     char previousCode = getSoundexCode(name[0]);
     int sIndex = 1;
 
-    processCharacters(name, soundex, &sIndex, &previousCode);
-    fillRemainingWithZeroes(soundex, &sIndex);
+    Write_characters(name, soundex, &sIndex, &previousCode);
+    Zerro_Padding(soundex, &sIndex);
 
     soundex[4] = '\0';
 }
